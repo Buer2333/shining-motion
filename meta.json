@@ -2,6 +2,68 @@
   "schema": 1,
   "objects": [
     {
+      "name": "DeckLive",
+      "route": "three",
+      "package": "three",
+      "export": "DeckLive",
+      "summary": "Nine textured cards stacked in depth, seen from the side and turning to face the camera; each card has its own pose so cards can fly in. Canvas can follow the deck or stay full screen with a camera view offset.",
+      "params": [
+        {
+          "name": "tex",
+          "type": "THREE.Texture[]",
+          "note": "One texture per layer, index = layer (0 = farthest). Load with useDeckTextures(urls)."
+        },
+        {
+          "name": "cam",
+          "type": "{ az, el, dist, cx?, cy? }",
+          "note": "Orbit camera: azimuth and elevation in degrees, distance in world units. cx / cy = where the deck center lands on the 1920x1080 canvas (camera view offset); setting them keeps the canvas full screen."
+        },
+        {
+          "name": "cards",
+          "type": "LiveCard[]",
+          "note": "Per card: k, opacity, edge (0..1), pos [x, y, z], quat. Parent computes these from the current frame."
+        },
+        {
+          "name": "cx",
+          "type": "number (px)",
+          "default": 960,
+          "note": "Follow-canvas mode only: canvas is shifted so the deck center lands here."
+        },
+        {
+          "name": "cy",
+          "type": "number (px)",
+          "default": 540,
+          "note": "Follow-canvas mode only: same, vertical."
+        },
+        {
+          "name": "fullscreen",
+          "type": "boolean",
+          "default": "true when cam.cx is set",
+          "note": "Keep the canvas at 0,0 and shift with the camera view offset instead of moving the canvas."
+        },
+        {
+          "name": "edgeColor",
+          "type": "string (hex)",
+          "default": "#222222",
+          "note": "Color of the card edge bars."
+        }
+      ],
+      "events": [],
+      "presets": {},
+      "usedIn": [],
+      "samples": [
+        {
+          "label": "Side view, canvas follows the deck",
+          "comp": "DeckLive"
+        },
+        {
+          "label": "Full screen with camera view offset",
+          "comp": "DeckLiveFullscreen"
+        }
+      ],
+      "status": "stable"
+    },
+    {
       "name": "Dust",
       "route": "2d",
       "package": "2d",
