@@ -1,4 +1,7 @@
 import { interpolate } from 'remotion';
+import { lerp } from './ease';
+
+export { lerp };
 
 export type XY = { x: number; y: number };
 export type Rect = { x: number; y: number; w: number; h: number };
@@ -7,7 +10,6 @@ export type Box = { left: number; top: number; width: number; height: number };
 export const toRect = (b: Box): Rect => ({ x: b.left, y: b.top, w: b.width, h: b.height });
 
 export const clamp = { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' } as const;
-export const lerp = (a: number, b: number, k: number) => a + (b - a) * k;
 
 export const ease = {
   out: (t: number) => 1 - Math.pow(1 - t, 3),

@@ -1,0 +1,13 @@
+{
+  "name": "@shining-motion/core",
+  "version": "0.3.0",
+  "private": true,
+  "description": "Object meta, deterministic random, easing, frame helpers and geometry shared by every route",
+  "license": "MIT",
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "files": ["src"],
+  "scripts": { "typecheck": "tsc --noEmit", "test": "vitest run" },
+  "peerDependencies": { "react": "^19.0.0", "remotion": "4.0.440" }
+}
