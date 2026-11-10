@@ -1,0 +1,13 @@
+{
+  "name": "@shining-motion/2d",
+  "version": "0.3.0",
+  "private": true,
+  "description": "Flat 2D objects for Remotion: specks, placeholder lines, stamps",
+  "license": "MIT",
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "files": ["src"],
+  "scripts": { "typecheck": "tsc --noEmit" },
+  "peerDependencies": { "react": "^19.0.0", "remotion": "4.0.440" }
+}

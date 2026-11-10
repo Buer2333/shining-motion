@@ -1,4 +1,5 @@
 import React from 'react';
+import { defineObject } from '../../core/src/meta';
 
 type Common = { n: number; h?: number; gap?: number; color?: string };
 type PercentProps = Common & { seed?: number; min?: number; w?: undefined; prog?: undefined };
@@ -27,3 +28,26 @@ const PixelLines: React.FC<PixelProps> = ({ n, w, prog = 1, h = 10, gap = 14, co
     })}
   </div>
 );
+
+export const meta = defineObject({
+  name: 'GrayLines',
+  route: '2d',
+  package: '2d',
+  export: 'GrayLines',
+  summary: 'Placeholder lines that say "there is text here" without asking anyone to read it. Percent widths, or unrolling pixel widths when w is given.',
+  params: [
+    { name: 'n', type: 'number', note: 'Number of lines.' },
+    { name: 'h', type: 'number (px)', default: 10, note: 'Line height.' },
+    { name: 'gap', type: 'number (px)', default: 12, note: 'Space between lines. Default is 14 when w is given.' },
+    { name: 'color', type: 'string', default: '#D9D9D9' },
+    { name: 'seed', type: 'number', default: 1, note: 'Percent mode only.' },
+    { name: 'min', type: 'number (%)', default: 45, note: 'Percent mode only: minimum line width.' },
+    { name: 'w', type: 'number (px)', note: 'Switches to pixel mode: lines unroll from the left.' },
+    { name: 'prog', type: 'number (0..1)', default: 1, note: 'Pixel mode only: unroll progress.' },
+  ],
+  events: [],
+  presets: {},
+  usedIn: [],
+  samples: [],
+  status: 'stable',
+});

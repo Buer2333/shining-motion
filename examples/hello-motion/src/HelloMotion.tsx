@@ -1,6 +1,7 @@
 import React from 'react';
 import { AbsoluteFill, useCurrentFrame } from 'remotion';
-import { Dust, GrayLines, Seal, easeInOut, easeOut, lerp, rectToQuad } from '@shining-motion/kit';
+import { Dust, GrayLines, Seal } from '@shining-motion/2d';
+import { easeInOut, easeOut, lerp, rectToQuad } from '@shining-motion/core';
 
 const CARD = { w: 560, h: 360 };
 const FLAT: [number, number][] = [[260, 360], [820, 360], [820, 720], [260, 720]];

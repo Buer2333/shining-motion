@@ -1,6 +1,7 @@
 import React from 'react';
 import { interpolate, useCurrentFrame } from 'remotion';
-import { clamp } from '../geom';
+import { clamp } from '../../core/src/geom';
+import { defineObject } from '../../core/src/meta';
 
 type SealProps = {
   text: string;
@@ -30,3 +31,26 @@ export const Seal: React.FC<SealProps> = ({ text, at, px, color, rot = -6, pad =
     </span>
   );
 };
+
+export const meta = defineObject({
+  name: 'Seal',
+  route: '2d',
+  package: '2d',
+  export: 'Seal',
+  summary: 'A double-ruled stamp: lands oversized, settles in 9 frames, and leaves a ring of ink specks.',
+  params: [
+    { name: 'text', type: 'string' },
+    { name: 'at', type: 'number (frame)', note: 'Frame the stamp lands on.' },
+    { name: 'px', type: 'number (px)', note: 'Font size.' },
+    { name: 'color', type: 'string', note: 'Border, text and specks.' },
+    { name: 'rot', type: 'number (deg)', default: -6 },
+    { name: 'pad', type: 'number (px)', default: 14, note: 'Horizontal padding.' },
+    { name: 'bg', type: 'string', default: 'transparent' },
+    { name: 'fontFamily', type: 'string', default: 'inherit' },
+  ],
+  events: ['at'],
+  presets: {},
+  usedIn: [],
+  samples: [],
+  status: 'stable',
+});
