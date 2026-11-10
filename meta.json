@@ -186,6 +186,68 @@
       "status": "stable"
     },
     {
+      "name": "SaturnRise",
+      "route": "three",
+      "package": "three",
+      "export": "SaturnRise",
+      "summary": "Eclipse-to-sunrise over a ringed planet: ring of fire at frame 0, camera dive, one light burst as the sun clears the edge, ring-stripe shadows on the planet. Optional real bloom.",
+      "params": [
+        {
+          "name": "background",
+          "type": "string (hex)",
+          "default": "#05060a",
+          "note": "Scene background. Use a dark color with bloom on."
+        },
+        {
+          "name": "planetColor",
+          "type": "string (hex)",
+          "default": "#6b7280"
+        },
+        {
+          "name": "ringColor",
+          "type": "string (hex)",
+          "default": "#e5e7eb",
+          "note": "Color of the ring bands."
+        },
+        {
+          "name": "sunColor",
+          "type": "string (hex)",
+          "default": "#ffffff",
+          "note": "Color of the sun glow sprites."
+        },
+        {
+          "name": "bloom",
+          "type": "boolean",
+          "default": false,
+          "note": "Add an UnrealBloom post pass (strength 0.9 + burst x 0.9)."
+        }
+      ],
+      "events": [],
+      "presets": {},
+      "usedIn": [],
+      "samples": [
+        {
+          "label": "Plain, light background",
+          "comp": "SaturnRise",
+          "props": {
+            "background": "#f4f4f4",
+            "planetColor": "#3a4a8c",
+            "ringColor": "#1a1a1a",
+            "sunColor": "#ffc933",
+            "bloom": false
+          }
+        },
+        {
+          "label": "Bloom on a dark background",
+          "comp": "SaturnRiseBloom",
+          "props": {
+            "bloom": true
+          }
+        }
+      ],
+      "status": "stable"
+    },
+    {
       "name": "Seal",
       "route": "2d",
       "package": "2d",
