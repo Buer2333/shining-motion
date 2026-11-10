@@ -8,7 +8,7 @@
   "main": "src/index.ts",
   "types": "src/index.ts",
   "files": ["src"],
-  "scripts": { "typecheck": "tsc --noEmit" },
+  "scripts": { "typecheck": "tsc --noEmit", "test:gl": "node tests/render_check.mjs" },
   "peerDependencies": {
     "@react-three/fiber": "9.8.1",
     "@remotion/three": "4.0.440",

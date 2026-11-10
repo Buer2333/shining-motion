@@ -5,13 +5,17 @@
   "description": "Object library for code-driven motion video: typed params, frame-number events, presets, meta.",
   "license": "MIT",
   "type": "module",
-  "workspaces": ["packages/*", "examples/*"],
+  "workspaces": [
+    "packages/*",
+    "examples/*"
+  ],
   "scripts": {
     "typecheck": "npm run typecheck --workspaces --if-present && tsc --noEmit -p gallery/remotion",
     "test": "vitest run",
     "meta": "tsx tools/build_meta.mjs",
     "gallery": "node gallery/build.mjs",
-    "stills": "node tools/render_stills.mjs"
+    "stills": "node tools/render_stills.mjs",
+    "test:gl": "npm run test:gl -w @shining-motion/gl --"
   },
   "devDependencies": {
     "@react-three/fiber": "9.8.1",
@@ -22,6 +26,7 @@
     "@types/node": "22.19.1",
     "@types/react": "19.3.0",
     "@types/three": "0.186.0",
+    "pngjs": "7.0.0",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "remotion": "4.0.440",

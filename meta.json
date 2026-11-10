@@ -127,6 +127,51 @@
       "status": "stable"
     },
     {
+      "name": "GLPasses",
+      "route": "gl",
+      "package": "gl",
+      "export": "GLPasses",
+      "summary": "Generic multi-pass WebGL2 runner: fragment-shader passes in order, a pass can read earlier passes as sampler uniforms, the last pass is drawn to the canvas. No built-in scene.",
+      "params": [
+        {
+          "name": "passes",
+          "type": "PassSpec[]",
+          "note": "Each: { id?, fs, inputs?: { samplerUniform: passId | textureName }, scale?, float? }. Run in array order; inputs read earlier passes only."
+        },
+        {
+          "name": "uniforms",
+          "type": "Uni | (frame: number) => Uni",
+          "default": {},
+          "note": "Float / int (\"i\" prefix) / vec2-4 by array length; \"v3\", \"v4\", \"f1\" name prefixes force vec3, vec4, float array. Every pass also gets uRes."
+        },
+        {
+          "name": "textures",
+          "type": "Record<string, TexImageSource>",
+          "note": "External textures by name, uploaded before every draw."
+        },
+        {
+          "name": "width",
+          "type": "number (px)",
+          "default": "composition width"
+        },
+        {
+          "name": "height",
+          "type": "number (px)",
+          "default": "composition height"
+        }
+      ],
+      "events": [],
+      "presets": {},
+      "usedIn": [],
+      "samples": [
+        {
+          "label": "Two passes: gradient, then a wobbling pixelate of it",
+          "comp": "GLPasses"
+        }
+      ],
+      "status": "experimental"
+    },
+    {
       "name": "GrayLines",
       "route": "2d",
       "package": "2d",
