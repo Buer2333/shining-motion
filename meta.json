@@ -240,6 +240,92 @@
       "status": "experimental"
     },
     {
+      "name": "GlassPrism",
+      "route": "three",
+      "package": "three",
+      "export": "GlassPrism",
+      "summary": "Glass triangular prism (transmission material) that can stand up, turn face to face, and flash its edges. Also exports FaceTurn (stick a card on a face), PostFace (line-art post card), faceYaw and PRISM_FACE.",
+      "params": [
+        {
+          "name": "x",
+          "type": "number (px)",
+          "note": "Canvas center, horizontal."
+        },
+        {
+          "name": "y",
+          "type": "number (px)",
+          "note": "Canvas center, vertical."
+        },
+        {
+          "name": "size",
+          "type": "number (px)",
+          "note": "Canvas edge, rounded to an integer."
+        },
+        {
+          "name": "yaw",
+          "type": "number (rad)",
+          "default": 0.3,
+          "note": "Rotation about the vertical axis. Use faceYaw(k) to face side k to the camera."
+        },
+        {
+          "name": "tilt",
+          "type": "number (rad)",
+          "default": 0.18,
+          "note": "Forward tilt."
+        },
+        {
+          "name": "view",
+          "type": "number 0..1",
+          "default": 0,
+          "note": "0 = triangular end faces the camera; 1 = standing, a rectangular side faces the camera."
+        },
+        {
+          "name": "opacity",
+          "type": "number",
+          "default": 1
+        },
+        {
+          "name": "z",
+          "type": "number",
+          "default": 10
+        },
+        {
+          "name": "edges",
+          "type": "\"wire\" | \"real\"",
+          "default": "wire",
+          "note": "\"real\" draws only the 9 true edges as thin cylinders."
+        },
+        {
+          "name": "flash",
+          "type": "number 0..1",
+          "default": 0,
+          "note": "Edges go from ink to white; also thickens the edges."
+        },
+        {
+          "name": "ink",
+          "type": "string (hex)",
+          "default": "#222222",
+          "note": "Edge color. Parsed by three, so a hex string, not a CSS variable."
+        }
+      ],
+      "events": [],
+      "presets": {},
+      "usedIn": [
+        "NO.07"
+      ],
+      "samples": [
+        {
+          "label": "End-on, slow turn",
+          "comp": "GlassPrism"
+        },
+        {
+          "label": "Standing, a post card on the facing side",
+          "comp": "GlassPrismFace"
+        }
+      ],
+      "status": "stable"
+    },
+    {
       "name": "GrayLines",
       "route": "2d",
       "package": "2d",
@@ -296,6 +382,70 @@
       "presets": {},
       "usedIn": [],
       "samples": [],
+      "status": "stable"
+    },
+    {
+      "name": "LightBeam",
+      "route": "2d",
+      "package": "2d",
+      "export": "LightBeam",
+      "summary": "A beam of light (white or one color) that grows from a point, with a soft glow. Also exports LightCone (big soft cone) and SpectrumBand (seven-color band that goes from bundled to fanned out).",
+      "params": [
+        {
+          "name": "from",
+          "type": "[number, number] (px)",
+          "note": "Start point."
+        },
+        {
+          "name": "to",
+          "type": "[number, number] (px)",
+          "note": "End point."
+        },
+        {
+          "name": "w",
+          "type": "number (px)",
+          "default": 22,
+          "note": "Beam width."
+        },
+        {
+          "name": "grow",
+          "type": "number 0..1",
+          "default": 1,
+          "note": "Fraction grown out from `from`."
+        },
+        {
+          "name": "opacity",
+          "type": "number 0..1",
+          "default": 1
+        },
+        {
+          "name": "color",
+          "type": "string (CSS color)",
+          "default": "#FFFFFF"
+        },
+        {
+          "name": "glow",
+          "type": "number",
+          "default": 0.35,
+          "note": "Outer halo strength."
+        },
+        {
+          "name": "z",
+          "type": "number",
+          "default": 5
+        }
+      ],
+      "events": [],
+      "presets": {},
+      "usedIn": [
+        "NO.07"
+      ],
+      "samples": [
+        {
+          "label": "Cone, beam and a fanned spectrum band",
+          "comp": "LightBeam"
+        }
+      ],
       "status": "stable"
     },
     {
