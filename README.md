@@ -13,10 +13,10 @@ npm workspaces，包名 `@shining-motion/<pkg>`，不上 npm。一条路线一�
 | 包 | 路线 | 放什么 |
 |---|---|---|
 | [`core`](packages/core) | 共享 | `ObjectMeta` / `defineObject`、确定性 `hash` / `rng`、缓动、`progress` / `frameEvent`、几何（`rectToQuad`） |
-| [`2d`](packages/2d) | `2d` | 平面 2D 对象：Dust、GrayLines、Seal |
-| [`three`](packages/three) | `three` | three.js / @remotion/three 对象（暂空） |
-| [`gl`](packages/gl) | `gl` | 原生 WebGL2 多 pass 与着色器对象（暂空） |
-| [`fakeui`](packages/fakeui) | `fakeui` | 中性样式的假界面 / 平台 UI 部件（暂空） |
+| [`2d`](packages/2d) | `2d` | 平面 2D 对象：Dust、GrayLines、Seal、LightBeam（含 LightCone / SpectrumBand） |
+| [`three`](packages/three) | `three` | three.js / @remotion/three 对象：DeckLive、SaturnRise、GlassPrism（含 FaceTurn / PostFace） |
+| [`gl`](packages/gl) | `gl` | 原生 WebGL2 多 pass 运行器：GLPasses（`npm run test:gl` 渲 still 断言像素） |
+| [`fakeui`](packages/fakeui) | `fakeui` | 中性样式的假界面 / 平台 UI 部件：Terminal、UrgencyGauge、CutReel、SocialPost、PlanSheet（颜色字体走 `theme` 参数） |
 | [`blender`](packages/blender) | `blender` | 只有接口：参数 → 缓存键（FNV-1a 64，TS 与 Python 同一实现）、`BlenderSequence`、`run.py` |
 | [`rig`](packages/rig) | `rig` | shining-rig，2D 角色骨骼库，自成一体，MIT（2026-11-07 从 Buer2333/shining-rig 连历史并入） |
 
@@ -57,6 +57,8 @@ npm run typecheck  # 每个包 tsc --noEmit
 npm test           # vitest
 npm run meta       # 汇总各包 meta，生成 meta.json
 npm run gallery    # 由 meta.json 生成 gallery/dist/index.html（不入库）
+npm run stills -- <outDir> <CompId[@frame]> ...   # 用 @remotion/renderer 渲 gallery/remotion 里的样片 still（gl=angle）
+npm run test:gl -- --out <dir>   # GLPasses 渲 still 并断言中心像素
 bash packages/rig/tools/public_scan.sh   # 公开前扫描：packages/、gallery/、tools/、examples/、skills/
 ```
 
