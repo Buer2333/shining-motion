@@ -2,6 +2,74 @@
   "schema": 1,
   "objects": [
     {
+      "name": "CutReel",
+      "route": "fakeui",
+      "package": "fakeui",
+      "export": "CutReel",
+      "summary": "Beat-locked cut vocabulary: base scene with hard pushes and slow drift, pop-in windows, three-up grids, impact hits, all from one frame number and a cut table. Also exports ViewBox, WinFrame, reelAt, StickerDefs.",
+      "params": [
+        {
+          "name": "cuts",
+          "type": "ReelCut<V>[]",
+          "note": "Cut table sorted by `at` (finished-video frames); kinds: full, win, swap, fill, tri, rot. The first cut must be full."
+        },
+        {
+          "name": "f",
+          "type": "number (current frame)",
+          "note": "Frame of the finished video."
+        },
+        {
+          "name": "W",
+          "type": "number (px)",
+          "note": "Width of the scene draw() paints."
+        },
+        {
+          "name": "H",
+          "type": "number (px)",
+          "note": "Height of the scene draw() paints."
+        },
+        {
+          "name": "draw",
+          "type": "(view: V) => ReactNode",
+          "note": "Paints a whole W x H scene for a view."
+        },
+        {
+          "name": "camOf",
+          "type": "(view: V, rect: Rect) => { focus: {x, y}, zoom }",
+          "note": "Framing of a view inside a box."
+        },
+        {
+          "name": "drift",
+          "type": "number",
+          "default": 0.0012,
+          "note": "Zoom added per frame while holding."
+        },
+        {
+          "name": "punch",
+          "type": "number",
+          "default": 0.06,
+          "note": "Start zoom of an impact hit; decays over 6 frames."
+        },
+        {
+          "name": "theme",
+          "type": "Partial<FakeTheme>",
+          "note": "Colors and fonts: ink, inkSoft, card, field, fieldInk, rule, ruleSoft, marker, wrong, code, paper, fontBody, fontDisplay, fontMeta. Missing keys use neutral grays and system fonts."
+        }
+      ],
+      "events": [
+        "f"
+      ],
+      "presets": {},
+      "usedIn": [],
+      "samples": [
+        {
+          "label": "Hard push, a pop-in window, then a three-up grid",
+          "comp": "CutReel"
+        }
+      ],
+      "status": "stable"
+    },
+    {
       "name": "DeckLive",
       "route": "three",
       "package": "three",
@@ -231,6 +299,64 @@
       "status": "stable"
     },
     {
+      "name": "PlanSheet",
+      "route": "fakeui",
+      "package": "fakeui",
+      "export": "PlanSheet",
+      "summary": "Line-art back-office sheet: title bar plus rows of field, value and check. Per-row write / check / highlight / glint progress, driven by the caller.",
+      "params": [
+        {
+          "name": "w",
+          "type": "number (px)"
+        },
+        {
+          "name": "h",
+          "type": "number (px)"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "rows",
+          "type": "PlanRow[]",
+          "note": "{ k, v, write?, check?, hl?, glint? }; the four progress values are 0..1."
+        },
+        {
+          "name": "px",
+          "type": "number (px)",
+          "default": 48,
+          "note": "Value font size; everything else scales from it."
+        },
+        {
+          "name": "titleIn",
+          "type": "number 0..1",
+          "default": 1,
+          "note": "Title opacity."
+        },
+        {
+          "name": "border",
+          "type": "number (px)",
+          "default": 6
+        },
+        {
+          "name": "theme",
+          "type": "Partial<FakeTheme>",
+          "note": "Colors and fonts: ink, inkSoft, card, field, fieldInk, rule, ruleSoft, marker, wrong, code, paper, fontBody, fontDisplay, fontMeta. Missing keys use neutral grays and system fonts."
+        }
+      ],
+      "events": [],
+      "presets": {},
+      "usedIn": [],
+      "samples": [
+        {
+          "label": "Four rows, mid-write",
+          "comp": "PlanSheet"
+        }
+      ],
+      "status": "stable"
+    },
+    {
       "name": "SaturnRise",
       "route": "three",
       "package": "three",
@@ -346,6 +472,251 @@
       "presets": {},
       "usedIn": [],
       "samples": [],
+      "status": "stable"
+    },
+    {
+      "name": "SocialPost",
+      "route": "fakeui",
+      "package": "fakeui",
+      "export": "SocialPost",
+      "summary": "Line-art social post card with platform tag, gray avatar, one line of text, media slot and like count. Compact variant when nick is omitted.",
+      "params": [
+        {
+          "name": "x",
+          "type": "number (px)"
+        },
+        {
+          "name": "y",
+          "type": "number (px)"
+        },
+        {
+          "name": "w",
+          "type": "number (px)"
+        },
+        {
+          "name": "platform",
+          "type": "string",
+          "note": "Platform tag text."
+        },
+        {
+          "name": "nick",
+          "type": "string",
+          "note": "Omit for the compact card."
+        },
+        {
+          "name": "date",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "note": "One line of post text."
+        },
+        {
+          "name": "likes",
+          "type": "string",
+          "note": "Like count as shown."
+        },
+        {
+          "name": "px",
+          "type": "number (px)",
+          "default": 40,
+          "note": "Body font size; everything else scales from it."
+        },
+        {
+          "name": "mediaH",
+          "type": "number (px)",
+          "default": 0,
+          "note": "Media slot height; children are drawn inside it."
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "note": "Media content."
+        },
+        {
+          "name": "likesK",
+          "type": "number",
+          "default": 0.95,
+          "note": "Like-count font size = px x likesK."
+        },
+        {
+          "name": "opacity",
+          "type": "number",
+          "default": 1
+        },
+        {
+          "name": "z",
+          "type": "number"
+        },
+        {
+          "name": "theme",
+          "type": "Partial<FakeTheme>",
+          "note": "Colors and fonts: ink, inkSoft, card, field, fieldInk, rule, ruleSoft, marker, wrong, code, paper, fontBody, fontDisplay, fontMeta. Missing keys use neutral grays and system fonts."
+        }
+      ],
+      "events": [],
+      "presets": {},
+      "usedIn": [],
+      "samples": [
+        {
+          "label": "Full post card with a media slot",
+          "comp": "SocialPost"
+        }
+      ],
+      "status": "stable"
+    },
+    {
+      "name": "Terminal",
+      "route": "fakeui",
+      "package": "fakeui",
+      "export": "Terminal",
+      "summary": "Dark terminal window that drops in like paper; monospace lines can type out and get timed underlines. Also exports TermBlock (corner block) and TermRows (placeholder rows).",
+      "params": [
+        {
+          "name": "x",
+          "type": "number (px)",
+          "note": "Left edge."
+        },
+        {
+          "name": "y",
+          "type": "number (px)",
+          "note": "Top edge."
+        },
+        {
+          "name": "w",
+          "type": "number (px)"
+        },
+        {
+          "name": "h",
+          "type": "number (px)"
+        },
+        {
+          "name": "px",
+          "type": "number (px)",
+          "note": "Code font size."
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "note": "Title bar text. Omit for none."
+        },
+        {
+          "name": "lines",
+          "type": "TermLine[]",
+          "note": "{ text | parts: [{ t, ul?: { at, dur, linear? } }], dim?, indent?, type?: { at, cps? } }. `at` frames are in the finished video."
+        },
+        {
+          "name": "at",
+          "type": "number (frame)",
+          "note": "Frame the window appears and drops in."
+        },
+        {
+          "name": "tilt",
+          "type": "number (deg)",
+          "default": -1.2,
+          "note": "Start rotation of the drop."
+        },
+        {
+          "name": "dropFrames",
+          "type": "number (frames)",
+          "default": 11,
+          "note": "Drop duration."
+        },
+        {
+          "name": "fg",
+          "type": "string (CSS color)",
+          "note": "Text color of normal lines. Default theme.paper."
+        },
+        {
+          "name": "theme",
+          "type": "Partial<FakeTheme>",
+          "note": "Colors and fonts: ink, inkSoft, card, field, fieldInk, rule, ruleSoft, marker, wrong, code, paper, fontBody, fontDisplay, fontMeta. Missing keys use neutral grays and system fonts."
+        }
+      ],
+      "events": [
+        "at"
+      ],
+      "presets": {},
+      "usedIn": [],
+      "samples": [
+        {
+          "label": "Terminal with a typed line and timed underlines",
+          "comp": "Terminal"
+        }
+      ],
+      "status": "stable"
+    },
+    {
+      "name": "UrgencyGauge",
+      "route": "fakeui",
+      "package": "fakeui",
+      "export": "UrgencyGauge",
+      "summary": "Vertical cell meter for \"how urgent\" with a continuous water level and an alert-colored top cell. Also exports Sweat (drop) and cellsLit(level).",
+      "params": [
+        {
+          "name": "x",
+          "type": "number (px)"
+        },
+        {
+          "name": "y",
+          "type": "number (px)"
+        },
+        {
+          "name": "h",
+          "type": "number (px)",
+          "note": "Tube height."
+        },
+        {
+          "name": "level",
+          "type": "number 0..1",
+          "note": "Water level; the top cell fills by the fractional part."
+        },
+        {
+          "name": "peak",
+          "type": "boolean",
+          "note": "Top cell turns the alert color."
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "default": "!",
+          "note": "Label above the tube, sized for one character."
+        },
+        {
+          "name": "w",
+          "type": "number (px)",
+          "default": 96
+        },
+        {
+          "name": "z",
+          "type": "number",
+          "default": 20
+        },
+        {
+          "name": "cells",
+          "type": "number",
+          "default": 8
+        },
+        {
+          "name": "opacity",
+          "type": "number"
+        },
+        {
+          "name": "theme",
+          "type": "Partial<FakeTheme>",
+          "note": "Colors and fonts: ink, inkSoft, card, field, fieldInk, rule, ruleSoft, marker, wrong, code, paper, fontBody, fontDisplay, fontMeta. Missing keys use neutral grays and system fonts."
+        }
+      ],
+      "events": [],
+      "presets": {},
+      "usedIn": [],
+      "samples": [
+        {
+          "label": "Meter at 60% with a sweat drop",
+          "comp": "UrgencyGauge"
+        }
+      ],
       "status": "stable"
     }
   ]
