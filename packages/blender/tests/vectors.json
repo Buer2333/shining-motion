@@ -1,0 +1,111 @@
+[
+  {
+    "name": "a",
+    "params": {
+      "radius": 1.5,
+      "count": 3
+    },
+    "canonical": "{\"count\":3,\"radius\":1.5}",
+    "key": "faf2d459771429c1"
+  },
+  {
+    "name": "nested",
+    "params": {
+      "cam": {
+        "pos": [
+          0,
+          1,
+          2
+        ],
+        "fov": 35
+      },
+      "mat": {
+        "color": "#ff8800",
+        "rough": 0.25
+      }
+    },
+    "canonical": "{\"cam\":{\"fov\":35,\"pos\":[0,1,2]},\"mat\":{\"color\":\"#ff8800\",\"rough\":0.25}}",
+    "key": "dc27261596381424"
+  },
+  {
+    "name": "key-order-a",
+    "params": {
+      "b": 2,
+      "a": {
+        "y": 1,
+        "x": [
+          1,
+          2
+        ]
+      },
+      "c": "z"
+    },
+    "canonical": "{\"a\":{\"x\":[1,2],\"y\":1},\"b\":2,\"c\":\"z\"}",
+    "key": "7ba88405c47090d6"
+  },
+  {
+    "name": "key-order-b",
+    "params": {
+      "c": "z",
+      "a": {
+        "x": [
+          1,
+          2
+        ],
+        "y": 1
+      },
+      "b": 2
+    },
+    "canonical": "{\"a\":{\"x\":[1,2],\"y\":1},\"b\":2,\"c\":\"z\"}",
+    "key": "7ba88405c47090d6"
+  },
+  {
+    "name": "numbers",
+    "params": {
+      "i": 42,
+      "neg": -7,
+      "zero": 0,
+      "float": 0.1,
+      "int_as_float": 2.0,
+      "small": 1e-07,
+      "big": 1e+21,
+      "mid": 123456789.125
+    },
+    "canonical": "{\"big\":1e+21,\"float\":0.1,\"i\":42,\"int_as_float\":2,\"mid\":123456789.125,\"neg\":-7,\"small\":1e-7,\"zero\":0}",
+    "key": "e97b414302e5d876"
+  },
+  {
+    "name": "chinese",
+    "params": {
+      "title": "云海 \"雾\"\n换行",
+      "tag": "中文"
+    },
+    "canonical": "{\"tag\":\"中文\",\"title\":\"云海 \\\"雾\\\"\\n换行\"}",
+    "key": "674b86d175f5ea38"
+  },
+  {
+    "name": "array",
+    "params": {
+      "list": [
+        1,
+        "two",
+        [
+          3
+        ],
+        {
+          "k": null
+        }
+      ],
+      "flag": true,
+      "none": null
+    },
+    "canonical": "{\"flag\":true,\"list\":[1,\"two\",[3],{\"k\":null}],\"none\":null}",
+    "key": "7d499f7b64d723ae"
+  },
+  {
+    "name": "empty",
+    "params": {},
+    "canonical": "{}",
+    "key": "08f44b07b5901a25"
+  }
+]
